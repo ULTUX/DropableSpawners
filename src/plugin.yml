@@ -1,0 +1,7 @@
+name: DropableSpawners
+version: 1.0
+main: pl.bullcube.ULTUX.Main
+api-version: 1.13
+commands:
+  dspawners:
+    description: Manage drop from spawners
