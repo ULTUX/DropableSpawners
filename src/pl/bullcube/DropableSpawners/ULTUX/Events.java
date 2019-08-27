@@ -1,4 +1,4 @@
-package pl.bullcube.ULTUX;
+package pl.bullcube.DropableSpawners.ULTUX;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -33,7 +33,6 @@ public class Events implements Listener {
             event.getBlock().getWorld().dropItem(event.getBlock().getLocation(), spawnerItem);
         }
     }
-
     @EventHandler
     public void BlockPlaceEvent(BlockPlaceEvent event){
         if (event.getBlockPlaced().getType().equals(Material.SPAWNER) && event.getPlayer().getGameMode().equals(GameMode.SURVIVAL)){
@@ -43,8 +42,10 @@ public class Events implements Listener {
                     EntityType entity = EntityType.valueOf(name.split("§9")[1]);
                     CreatureSpawner spawner = ((CreatureSpawner) event.getBlockPlaced().getState());
                     spawner.setSpawnedType(entity);
+                    spawner.setMinSpawnDelay(1);
+                    spawner.setMaxSpawnDelay(1);
+                    spawner.setSpawnCount(10);
                     spawner.update();
-
                 } catch (IllegalArgumentException e) {
 
                     Bukkit.getServer().getConsoleSender().sendMessage(name);
