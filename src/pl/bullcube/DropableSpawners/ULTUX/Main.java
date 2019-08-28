@@ -54,7 +54,7 @@ public class Main extends JavaPlugin {
                     for (int i = 0; i < fields.length; i++){
                         complete.add(fields[i].getName());
                     }
-                    ArrayList<String> partial = new ArrayList();
+                    ArrayList<String> partial = new ArrayList<>();
                     for (int i = 0; i < complete.size(); i++){
                         if (complete.get(i).toLowerCase().contains(args[1].toLowerCase())) partial.add(complete.get(i));
                     }
