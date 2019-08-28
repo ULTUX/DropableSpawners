@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.block.CreatureSpawner;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
@@ -42,9 +41,12 @@ public class Events implements Listener {
                     EntityType entity = EntityType.valueOf(name.split("§9")[1]);
                     CreatureSpawner spawner = ((CreatureSpawner) event.getBlockPlaced().getState());
                     spawner.setSpawnedType(entity);
-                    spawner.setMinSpawnDelay(1);
-                    spawner.setMaxSpawnDelay(1);
-                    spawner.setSpawnCount(10);
+                    spawner.setMaxNearbyEntities(15);
+                    spawner.setMinSpawnDelay(80);
+                    spawner.setMaxSpawnDelay(120);
+                    spawner.setRequiredPlayerRange(32);
+                    spawner.setDelay(-1);
+                    spawner.setSpawnCount(3);
                     spawner.update();
                 } catch (IllegalArgumentException e) {
 
